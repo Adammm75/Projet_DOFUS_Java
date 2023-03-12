@@ -25,6 +25,9 @@ public class ProRPjet {
         int gainKama = 0;
         int nbAlea;
         int nbAleaCoffre;
+        int choixmenu=0;
+        
+        
         Adversaire choixMonstre;
         String affMonstre;
         String affTaverne = "-----------------------------------------------------\n"
@@ -52,66 +55,77 @@ public class ProRPjet {
                 + "1 - Oui\n"
                 + "2 - Non\n"
                 + "-----------------------------------------------------";
+        
+
         // Zone I
         Adversaire bouftou = new Adversaire("Bouftou affamé",
                 10,
                 10,
                 3,
                 1,
-                20);
+                20
+                );
         Adversaire tofu = new Adversaire("Tofu immature",
                 5,
                 5,
                 5,
                 0,
-                40);        
+                40 
+                );        
         // Zone II
         Adversaire sanglier = new Adversaire("Sanglier violent",
                 20,
                 20,
                 6,
                 5,
-                25);
+                25
+                );
         Adversaire tournesol = new Adversaire("Tournesol fou",
                 10,
                 10,
                 10,
                 3,
-                50);        
+                50 
+                );        
         // Zone III
         Adversaire craqueboule = new Adversaire("Craqueboule stupide",
                 40,
                 40,
                 12,
                 10,
-                30);
+                30
+                );
         Adversaire bandit = new Adversaire("Bandit hargneux",
                 20,
                 20,
                 20,
                 8,
-                60);        
+                60
+                );        
         // Boss I
         Adversaire milimilou = new Adversaire("Milimilou fourbe",
                 20,
                 20,
-                10,
-                8,
-                25);
+                2,
+                2,
+                25
+                );
         // Boss II
         Adversaire mobEponge = new Adversaire("Mob l'Eponge carré",
                 40,
                 40,
                 20,
                 17,
-                30);
+                30
+                );
         // Boss III
         Adversaire bouftouRoyal = new Adversaire("Bouftou Royal",
                 80,
                 80,
                 25,
                 20,
-                35);
+                35 
+              );
 
         /*
          * Lance l'introduction.
@@ -189,6 +203,7 @@ public class ProRPjet {
                             joueur.setPotion(true);
                             System.out.println("Vous avez acheté une potion.");
                             joueur.affKama();
+                            
                         }
                     }
                 }
@@ -205,21 +220,35 @@ public class ProRPjet {
                 {
                     System.out.println("Vous vous rendez dans la forêt.");
                     nbAlea = f.alea();
-                    if(nbAlea < 20)
+                    if(nbAlea < 99)
                     {
                         // Coffre
                         choixCoffre = f.repet(2, affCoffre);
                         if(choixCoffre == 1)
                         {
                             nbAleaCoffre = f.alea();
-                            if(nbAleaCoffre < 20)
+                            if(nbAleaCoffre < 1)
                                 joueur.pertePv(affCoffrePiege(5));
                             
-                            else if(nbAleaCoffre < 90)
-                                joueur.gagneKama(affCoffre(5));
+                            if(nbAleaCoffre < 30)
+                                
+                                System.out.print("Vous avez de la chance, le coffre vous a offert un nouveau pouvoir en plus \n");
+                                getaffpouvoirbonus();
+                                System.out.println("----------------------------------------------------------------------------------");
                             
-                            else
-                                affCoffreVide();    
+                            
+                            if(nbAleaCoffre < 50)
+                                System.out.print("Vous avez de la chance, le coffre vous a offert un nouveau pouvoir en plus \n");
+                                getaffpouvoirbonus2();
+                                System.out.println("----------------------------------------------------------------------------------");
+ 
+                                choixmenu = f.choixmenu();
+                            
+                                 if (choixmenu==2) 
+                                   choixChoix = f.affChoix(); 
+                                 p.affStats();
+                                                            
+                                    
                         }
                     }
                     
@@ -257,7 +286,7 @@ public class ProRPjet {
                 {
                     System.out.println("Vous vous dirigez vers les champs.");
                     nbAlea = f.alea();
-                    if(nbAlea < 20)
+                    if(nbAlea < 90)
                     {
                         // Coffre
                         choixCoffre = f.repet(2, affCoffre);
@@ -374,6 +403,12 @@ public class ProRPjet {
                    System.out.println("Haha bien joué ! Peut-être le boss le moins impressionnant mais j'avoue que je n'avais pas misé un kama sur vous.");
                    System.out.println("Maintenant, Mob l'Eponge n'attend que vous, une aventure épique c'est impressionnant.");
                    joueur.setKama(500);
+                   niveau1();
+                   choixmenu = f.choixmenu();
+                   if (choixmenu==2)         
+                       p.affStatsniveau1();
+                   
+                   choixChoix = f.affChoix(); 
                 }
                 else if(choixBoss == 1 && (milimilou.getPvActuel() <= 0))
                 {
@@ -455,6 +490,8 @@ public class ProRPjet {
         
     }
 
+    
+
     public static String combat(Personnage p, Adversaire a)
     {
         int choixJoueur;
@@ -480,6 +517,7 @@ public class ProRPjet {
             {
                 // Afficher stats
                 p.affStatsCombat();
+               
                 a.affStatsCombat();  
                 regardeStats = true;
             }
@@ -497,20 +535,36 @@ public class ProRPjet {
             else if(choixJoueur == 3)
             {
                 // Potion
-                if(p.isPotion() == true)
+                
+                if(p.getNbrpotion()> 0)
                 {
-                    p.setPotion(false);
+                   
                     p.utilisationPotion();
                     System.out.println("Vous utilisez la potion.");
                     System.out.println("...");
                     System.out.println("Vous avez regagné tous vos pv !");
+                    p.setnbrPotion();
+                    
+                    
                     p.affVie();
+                   
+ 
                 }
-                else
-                {
-                    System.out.println("Vous n'avez plus de potion...");
+                else   { 
+                    System.out.println("Vous avez utiliser toutes vos potions.");
+                    System.out.println("...");
+                    System.out.println("Aie, vous n'avez plus de potion ! ");
+                    p.affVie();
+                    
                 }
+                
+                
+                
+
+                
+                
             }
+            
             else
             {
                 // Fuire
@@ -554,5 +608,77 @@ public class ProRPjet {
         System.out.println("Le coffre semble avoir déjà été fouillé...");
         System.out.println("Il est vide.");
     }
+    public static String getaffpouvoirbonus() {
+        
+       String pouvoirbonus1="electra";
+       String pouvoirbonus2="joker";
+       System.out.println("Comme nouveau pouvoir bonus, nous avons opté de vous attribué : \n" + pouvoirbonus1 );
+       System.out.println("----------------------------------------------------------------------------------");
+       System.out.println("Jamais deux sans un, nous vous offrons aussi le pouvoir : \n" + pouvoirbonus2 );
+       System.out.println("----------------------------------------------------------------------------------");
+       System.out.println("Pour connaitre leurs statistiques de combat, entrer 2" );
+       return pouvoirbonus1 + pouvoirbonus2;
+    }
+    public static String getaffpouvoirbonus2() {
+        
+       String pouvoirbonus1="Sicario";
+       String pouvoirbonus2="Elchapooo";
+       System.out.println("Comme nouveau pouvoir bonus, nous avons opté de vous attribué : \n" + pouvoirbonus1 +" qui vous permettra d'éviter enlever directement 50 de dégats à votre ennemie");
+       System.out.println("----------------------------------------------------------------------------------");
+       System.out.println("Jamais deux sans un, nous vous offrons aussi le pouvoir : \n" + pouvoirbonus2 + " qui vous permettre d'être invicible et donc d'attaquer sans être touché par des dégats" );
+       System.out.println("----------------------------------------------------------------------------------");
+       System.out.println("Pour connaitre leurs statistiques de combat, entrer 2" );
+       return pouvoirbonus1 + pouvoirbonus2;
+    }
+    
+  public static void niveau1()
+    {
+        System.out.println("Vous avez gagné de l'expérience, vous venez de passer votre Niveau 1");
+        System.out.println("Niveau 1 = 0|----------");
+        }       
+    
+    public static void niveau2()
+    {
+           System.out.println("Vous avez gagné de l'expérience, vous venez de passer  votre Niveau 2");
+        System.out.println("Niveau 2 = 0|0|---------");
+        
+    }
+    public static void niveau3()
+    {
+         System.out.println("Vous avez gagné de l'expérience, vous venez de passer  votre Niveau 3 !");
+        System.out.println("Niveau 3 = 0|0|0|--------");
+        
+    }
+     public static void niveau4()
+    {
+             System.out.println("Vous avez gagné de l'expérience, vous venez de passer votre Niveau 4 !");
+        System.out.println("Niveau 4 = 0|0|0|0|-------");
+    }
+       public static void niveau5 ()
+    {
+           System.out.println("Vous avez gagné de l'expérience, vous venez de passer votre Niveau 5 !");
+        System.out.println("Niveau 5 = 0|0|0|0|0|------");
+    }  
+     
+     
+     
+       //
+      //  System.out.println("Vous avez gagné de l'expérience, vous venez de passer votre Niveau 6 !");
+      //  System.out.println("Niveau 6 = 0|0|0|0|0|0|-----");
+     //              
+      //  System.out.println("Vous avez gagné de l'expérience, vous venez de passer votre Niveau 7 !");
+      //  System.out.println("Niveau 7 = 0|0|0|0|0|0|0|----");
+     //                  
+      //  System.out.println("Vous avez gagné de l'expérience, vous venez de passer votre Niveau 8 !");
+       // System.out.println("Niveau 8 = 0|0|0|0|0|0|0|0|---");
+     //                     
+      //  System.out.println("Vous avez gagné de l'expérience, vous venez de passer votre Niveau 9 !");
+     //   System.out.println("Niveau 9 = 0|0|0|0|0|0|0|0|0|0|-");
+                  //            
+      //  System.out.println("Vous avez gagné de l'expérience, vous venez de passer votre Niveau 10 !");
+       // System.out.println("Niveau 10 = 0|0|0|0|0|0|0|0|0|0");
+                                 
+        //
+     
     
 }

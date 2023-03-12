@@ -7,7 +7,7 @@ package com.mycompany.prorpjet;
 import java.util.Scanner;
 
 /**
- *
+ *p.setPotion(false);
  * @author erwan
  */
 public class fonctionDofus {
@@ -87,7 +87,7 @@ public class fonctionDofus {
     public Personnage creationPerso()
     {
         Personnage p = new Personnage("", introduction(),
-                55, 55, 4, 1, 20);   
+                55, 55, 2, 1, 20,3,"electra", "joker");     
         System.out.println("Quel est votre nom disciple " + p.getClassePersonnage()
                 + " ?");
         String nomDuJoueur = s.next();
@@ -109,6 +109,15 @@ public class fonctionDofus {
                 +"-----------------------------------------------------"; 
         return repet(6, aff);
     }
+    public int choixmenu()
+    {
+        String aff = "-----------------------------------------------------\n"
+                + "Voulez-vous voir les statistiques de vos nouveaux pouvoirs?\n"
+                + "1 - Oui\n"
+                + "2 - Non\n"
+                +"-----------------------------------------------------"; 
+        return repet(1, aff);
+    }
     public int affZone()
     {
         String aff = "-----------------------------------------------------\n"
@@ -125,7 +134,7 @@ public class fonctionDofus {
         String aff = "-----------------------------------------------------\n"
                 + "Quelle menace veux-tu éliminer ?\n"
                 + "1 - Affronter le Milimilou. (boss I)\n"
-                + "2 - Affronter Mob l'Eponge. (boss II)\n"
+                + "2 - Affronter Mob l'ponge. (boss II)\n"
                 + "3 - Affronter le Bouftou Royal. (boss III)\n"
                 + "4 - (retour)\n"
                 + "-----------------------------------------------------";

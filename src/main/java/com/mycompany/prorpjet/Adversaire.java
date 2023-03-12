@@ -17,12 +17,14 @@ public class Adversaire {
     private int coupCritique;
     private boolean boss;
     private int zone;
+
     public Adversaire(String unNom,
             int unNbPvActuel,
             int unNbPvMax,
             int uneAtk,
             int uneDef,
-            int unCC)
+            int unCC
+           )
     {        
         this.nomAdversaire = unNom;
         this.attaque = uneAtk;

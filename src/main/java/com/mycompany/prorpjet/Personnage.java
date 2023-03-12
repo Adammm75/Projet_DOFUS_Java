@@ -17,15 +17,42 @@ public class Personnage {
     private int defense;
     private int coupCritique;
     private int kama;
-    private boolean potion;
-
+    private int nbrpotion;
+    private String pouvoirbonus1="electra";
+    private String pouvoirbonus2="joker";
+    private String pouvoirbonus3="sicario";
+    private String pouvoirbonus4="elchapoo";  
+    private String niveau1="Niveau 1";
+    private String niveau2="Niveau 2";
+    private String niveau3="Niveau 3";
+    private String niveau4="Niveau 4";
+    private String niveau5="Niveau 5";
+    private String niveau6="Niveau 6";
+    private String niveau7="Niveau 7";
+    private String niveau8="Niveau 8";
+    private String niveau9="Niveau 9";
+    private String niveau10="Niveau 10";
+    
     public Personnage(String nomPersonnage,
             String classePersonnage,
             int pvActuel,
             int pvMax,
             int attaque,
             int defense,
-            int coupCritique) 
+            int coupCritique,
+    String pouvoirbonus1,
+            String pouvoirbonus2,
+            int nbrpotion,
+            String niveau1,
+            String niveau2,
+            String niveau3,
+            String niveau4,
+            String niveau5,
+            String niveau6,
+            String niveau7,
+            String niveau8,
+            String niveau9,
+            String niveau10); 
     {
         this.nomPersonnage = nomPersonnage;
         this.classePersonnage = classePersonnage;
@@ -35,7 +62,19 @@ public class Personnage {
         this.defense = defense;
         this.coupCritique = coupCritique;
         this.kama = 150;
-        this.potion = true;
+        this.nbrpotion=nbrpotion;
+        this.pouvoirbonus1="electra";
+        this.pouvoirbonus2="joker";
+        this.niveau1=niveau1;
+        this.niveau2=niveau2;
+        this.niveau3=niveau3;
+        this.niveau4=niveau4;
+        this.niveau5=niveau5;
+        this.niveau6=niveau6;
+        this.niveau7=niveau7;
+        this.niveau8=niveau8;
+        this.niveau9=niveau9;
+        this.niveau10=niveau10;
         switch(this.classePersonnage)
         {
             case "Féca":
@@ -92,6 +131,10 @@ public class Personnage {
         this.pvActuel = this.pvMax;
     }
 
+    public int getNbrpotion() {
+        return this.nbrpotion;
+    }
+
     public String getNomPersonnage() {
         return nomPersonnage;
     }
@@ -127,6 +170,7 @@ public class Personnage {
     public int getAttaque() {
         return attaque;
     }
+    
 
     public void setAttaque(int attaque) {
         this.attaque = attaque;
@@ -155,120 +199,271 @@ public class Personnage {
     public void setKama(int kama) {
         this.kama = kama;
     }
-
-    public boolean isPotion() {
-        return potion;
-    }
-
-    public void setPotion(boolean potion) {
-        this.potion = potion;
-    }
-
     
     public void affStats() {
-        System.out.println("Ton nom est " + this.nomPersonnage + ".");
-        System.out.println("Tu es un disciple " + this.classePersonnage + " !");
-        System.out.println("Tu as actuellement " + this.pvActuel + "/" + this.pvMax + " PV.");
-        System.out.println("Tu as une attaque de " + this.attaque + ".");
-        System.out.println("Tu as une défense de " + this.defense + ".");
-        System.out.println("Tu as " + this.coupCritique + "% de coup critique !");
-        System.out.println("Enfin, tu as "+ this.kama + " kamas.");
-        if(this.isPotion() == true)
-            System.out.println("Vous avez une potion.");
-        else
-            System.out.println("Vous n'avez pas de potion.");
+       
+        System.out.println("Vous êtes un : " + this.classePersonnage );
+        System.out.println("Vous êtes un : " + this.nomPersonnage );
+        System.out.println("Vous avez : " + this.kama + "  kama" );
+        System.out.println("Vos statistiques sont les suivantes : " );
+        System.out.println("Vous êtes un : " + this.nomPersonnage );
+        System.out.println("Vous avez : " + this.pvActuel/this.pvMax + " pv ");
+
+        System.out.println("Vous avez : " + this.attaque + "d'attaque");
+        System.out.println("Vous avez : " + this.defense + "de défense " );
+        System.out.println("Vous avez : " + this.coupCritique + " de coup critique" );
+        System.out.println("Vous avez : " + this.pouvoirbonus1 + " comme premier pouvoirs bonus" );
+        System.out.println("Vous avez : " + this.pouvoirbonus2 + " comme second pouvoirs bonus");
+        /*
+        
+        Cette fonction affiche la classe du joueur, son nom ainsi que son nombre de kamas.
+        Cette fonction affichera également les stats du joueur. (Nom, PV, Att, Def, Crit).
+        Elle affichera aussi si le joueur a une potion ou non.
+        */
     }
+    
+
+     public void affStatsniveau1() {
+       
+        System.out.println("Vous êtes un : " + this.classePersonnage );
+        System.out.println("Vous êtes un : " + this.nomPersonnage );
+        System.out.println("Vous avez : " + this.kama + "  kama" );
+        System.out.println("Vos statistiques sont les suivantes : " );
+        System.out.println("Vous êtes un : " + this.nomPersonnage );
+        System.out.println("Vous avez : " + this.pvActuel/this.pvMax + " pv ");
+
+        System.out.println("Vous avez : " + this.attaque + "d'attaque");
+        System.out.println("Vous avez : " + this.defense + "de défense " );
+        System.out.println("Vous avez : " + this.coupCritique + " de coup critique" );
+        System.out.println("Vous êtes : " + this.niveau1 + ", le peuple vous félicite ! Bravo ! Mais beaucoup vous reste...");
+        /*
+        Cette fonction affiche la classe du joueur, son nom ainsi que son nombre de kamas.
+        Cette fonction affichera également les stats du joueur. (Nom, PV, Att, Def, Crit).
+        Elle affichera aussi si le joueur a une potion ou non.
+        */
+    }
+    
     public void affStatsCombat() {
-        System.out.println("-----------------------------------------------------");
-        System.out.println(this.nomPersonnage + " :");
-        System.out.println("Tu as actuellement " + this.pvActuel + "/" + this.pvMax + " PV.");
-        System.out.println("Tu as une attaque de " + this.attaque + ".");
-        System.out.println("Tu as une défense de " + this.defense + ".");
-        System.out.println("Tu as " + this.coupCritique + "% de coup critique.");
-        if(this.isPotion() == true)
-            System.out.println("Vous avez une potion.");
-        else
-            System.out.println("Vous n'avez pas de potion.");
-        System.out.println("-----------------------------------------------------");
+        
+        System.out.println("Vous êtes un : " + this.nomPersonnage );
+        System.out.println("Vos statistiques sont les suivantes : " );
+        System.out.println("Vous avez : " + this.pvActuel/this.pvMax + " pv ");
+        System.out.println("Vous avez : " + this.attaque + "d'attaque");
+        System.out.println("Vous avez : " + this.defense + "de défense " );
+        System.out.println("Vous avez : " + this.coupCritique + " de coup critique" );
+        /*
+        Cette fonction affiche les stats du joueur. (Nom, PV, Att, Def, Crit)
+        Elle affichera aussi si le joueur a une potion ou non.
+        */
     }
     public void gagneKama(int gainKama)
     {
-        this.kama += gainKama;
+        int kamafinal= this.kama + gainKama;
+        System.out.println("Vous avez : " + kamafinal + " kama" );
+        /*
+        Cette fonction augmente les kamas du joueur (kama de base + gainKama)
+        */
     }
     public void perdreKama(int perdreKama)
     {
-        this.kama -= perdreKama;
-        if(this.kama < 0)
-            this.kama = 0;
+
+        int kamafinal1= this.kama - perdreKama;
+        if (kamafinal1 <0) {
+        System.out.println("Vous ne pouvez pas avoir de kama négatif "  );    
+        }
+        else {
+        System.out.println("Vous avez : " + kamafinal1 + " kama" );
+    }
+
+        
+        /*
+        Cette fonction diminue les kamas du joueur (kama de base - perdreKama)
+        /!\ On ne peut pas avoir un nombre de kamas négatif /!\
+        */
     }
     public void pertePv(int degat)
     {
-        this.pvActuel -= degat;
-        if(this.pvActuel <= 0)
-            this.pvActuel = 0;
+        int pvfinal= this.pvActuel - degat;
+        if (pvfinal <0) {
+        pvfinal=0;
+        System.out.println("Vous avez : " + pvfinal + " pv" );
+        }
+        else {
+        System.out.println("Vous avez : " + pvfinal + " pv" );
+    }
+
+        /*
+        Cette fonction diminue les pvActuel du joueur (pvActuel - degat)
+        /!\ On ne peut pas avoir un nombre de pv négatif /!\
+        */
     }
     public void utilisationPotion()
     {
-        this.pvActuel = this.pvMax;
+        this.pvActuel=this.pvMax;
+        System.out.println("Vous avez :" + this.pvActuel + "pv" );
+        /* 
+        Cette fonction met les pvActuel du joueur au max.
+        */
     }
     public void reposTaverne()
     {
-        this.pvActuel += 5;
-        if(this.pvActuel > this.pvMax)
-            this.pvActuel = this.pvMax;
+        int pvfinal=  this.pvActuel + 5;
+        if (pvfinal>this.pvMax) {
+      
+            System.out.println("Vos pv actuel ne doivent pas être supérieur à vos pvMax");
+        }
+        else {
+            System.out.println("Vos nouveaux pv sont  : " + pvfinal + "pv" );
+        }
+        
+        
+        /* 
+        Cette fonction augmente les pvActuel du joueur de 5.
+        /!\ Le joueur ne pourra pas avoir plus de pvActuel que de pvMax. /!\
+        */ 
     }
     public void affKama()
     {
-        System.out.println("Il vous reste " 
-            + this.getKama()
-            + " kamas.");
+        System.out.println("Vous avez  : " + this.kama + "kama" );
+        /*
+        Cette fonction affiche le nombre de kamas en la possession du joueur.
+        */
     }
     public void affVie()
     {
-        System.out.println("Vous avez désormais : " 
-                + this.getPvActuel()
-                + " / "
-                + this.getPvMax()
-                + " PV.");        
+        System.out.println("Vous avez : " + this.pvActuel / this.pvMax + "pv" );
+        /*
+        Cette fonction affiche le nombre de pv sous la forme "pvActuel" / "pvMax"
+        Exemple affichage -> " Vous avez 45/60 pv. "
+        */
     }
     public void augPV(int augmentation)
     {
-        this.pvActuel += augmentation;
-        this.pvMax += augmentation;
+        int haussepvA= this.pvActuel + augmentation;
+        int haussepvM = this.pvMax + augmentation;
+        System.out.println("Vos pv Actuel ont augmenté et s'élève à :" + haussepvA );
+        System.out.println("Vos pv Max ont augmenté et s'élève à :" + haussepvM );
+        /*
+        Augmente les pvActuel et pvMax à l'aide de l'argument augmentation.
+        */
     }
     public void augCrit(int augmentation)
     {
-        this.coupCritique += augmentation;
+        int hausseCritique= this.coupCritique + augmentation;
+        System.out.println("Vos Coupcritique ont augmenté et s'élève à :" + hausseCritique );
+        /*
+        Augmente l'attribut critique à l'aide de l'argument augmentation.
+        */
     }
     public void augAttaque(int augmentation)
     {
-        this.attaque += augmentation;
+        int hausseattaque= this.attaque + augmentation;
+        System.out.println("Vos attaques ont augmenté et s'élève à :" + hausseattaque );
+        /*
+        Augmente l'attribut attaque à l'aide de l'argument augmentation.
+        */
     }
     public void augDefense(int augmentation)
     {
-        this.defense += augmentation;
+        int haussedefense= this.defense + augmentation;
+        System.out.println("Votre défense a augmenté et s'élève à :" + haussedefense);
+        /*
+        Augmente l'attribut defense à l'aide de l'argument augmentation.
+        */
     }
     public void affAttaque()
     {
-        System.out.println("Tu as " + this.attaque + " d'attaque.");
+        System.out.println("Votre attaque est :" + this.attaque);
+        /*
+        Affiche l'attaque du joueur.
+        */
     }
     public void affDefense()
     {
-        System.out.println("Tu as " + this.defense + " de défense.");
+        
+        System.out.println("Votre défense est :" + this.defense);
+        /*
+        Affiche la défense du joueur.
+        */
     }
     public void affCritique()
     {
-        System.out.println("Tu as " + this.coupCritique + "% de critique.");
+        
+        double nouvellecritique= this.coupCritique*100;
+        int nouvellecritiques= (int)nouvellecritique;
+        System.out.println("Vous avez : " + nouvellecritiques+"%" + "de critique" ); 
+        /*
+        Affiche le pourcentage de critique du joueur sous la forme critique%.
+         -> Par exemple : "Vous avez 25% de critique"
+        */
     }
     public void subirDegat(int attaqueAdversaire, boolean critiqueAdversaire)
     {
-        int degatAdversaire = attaqueAdversaire;
-        if(critiqueAdversaire)
-            degatAdversaire += attaqueAdversaire;
-        degatAdversaire -= this.defense;
-        if(degatAdversaire < 0)
-            degatAdversaire = 0;
-        System.out.println("Vous perdez "+degatAdversaire+" pv.");
-        this.pvActuel = this.pvActuel - degatAdversaire;
+        if (critiqueAdversaire== true) {
+        this.pvActuel= (attaqueAdversaire*2) - this.defense;
+        
+                if(this.pvActuel<0){
+                    this.pvActuel=0;
+                }
+                        else {
+                            System.out.println("Vos nouveaux pv s'élève à :" +  this.pvActuel);
+                    }
+        }
+        else {
+        this.pvActuel= attaqueAdversaire - this.defense;
+                if(this.pvActuel<0){
+                        this.pvActuel=0;
+                }
+        
+        System.out.println("Vos nouveaux  pv s'élèvent à :" + this.pvActuel);
+        }
+        
+        
+                
+
+        /*
+        Cette fonction va servir à faire baisser les points de vie du personnage.
+        Vous devrez modifier l'attribut "pvActuel" du joueur.
+        Deux arguments :
+         -> attaqueAdversaire qui correspond à l'attaque du Adversaire.
+         -> critiqueAdversaire qui dit si un Adversaire à réaliser un coup critique ou non.
+        Calcul des dégâts : attaqueAdversaire + (attaqueAdversaire si critiqueAdversaire == true) - defense du joueur.
+        
+        /!\ Attention au calcul des dégâts donnant un résultat négatif /!\
+        */
     }
+ public void setnbrPotion() {
+        
+ 
+          
+        if (this.nbrpotion==3) {
+              this.nbrpotion-=1;
+              System.out.println("Fais attention, il te reste seulement : " + this.nbrpotion + "  potions. ");
+              this.nbrpotion=2;
+        }
+        
+        else if (this.nbrpotion==2){
+
+            this.nbrpotion-=1;
+            System.out.println("Fais attention, il te reste seulement : " + this.nbrpotion + "  potions. ");
+            this.nbrpotion=1; 
+        }
+        
+        else if (this.nbrpotion==1){
+
+            this.nbrpotion-=1;
+            System.out.println("Fais attention, il te reste seulement : " + this.nbrpotion + "  potions. ");
+            this.nbrpotion=0; 
+        }
+        
+  
+    }
+             
+    public String getaffpouvoirbonus() {
+        
+       
+        return this.pouvoirbonus1;
+    }
+      
+ 
 }
