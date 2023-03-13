@@ -52,11 +52,12 @@ public class Personnage {
             String niveau7,
             String niveau8,
             String niveau9,
-            String niveau10); 
+            String niveau10)
     {
         this.nomPersonnage = nomPersonnage;
         this.classePersonnage = classePersonnage;
         
+        this.pvActuel= pvActuel;
         this.pvMax = pvMax;
         this.attaque = attaque;
         this.defense = defense;
@@ -131,6 +132,7 @@ public class Personnage {
         this.pvActuel = this.pvMax;
     }
 
+    
     public int getNbrpotion() {
         return this.nbrpotion;
     }
@@ -212,8 +214,9 @@ public class Personnage {
         System.out.println("Vous avez : " + this.attaque + "d'attaque");
         System.out.println("Vous avez : " + this.defense + "de défense " );
         System.out.println("Vous avez : " + this.coupCritique + " de coup critique" );
-        System.out.println("Vous avez : " + this.pouvoirbonus1 + " comme premier pouvoirs bonus" );
-        System.out.println("Vous avez : " + this.pouvoirbonus2 + " comme second pouvoirs bonus");
+        System.out.println("Vous avez : " + this.pouvoirbonus1 + " comme premier pouvoir bonus donnant + 3 dégat sur un ennemie de façon aléatoire" );
+        System.out.println("Vous avez : " + this.pouvoirbonus2 + " comme second pouvoir bonus permet de gagner automatiquement le combat !");
+        System.out.println("Ces fonctionnalités (les deux nouveaux pouvoir) sont en cours de travaux veuillez patienter !");
         /*
         
         Cette fonction affiche la classe du joueur, son nom ainsi que son nombre de kamas.
@@ -236,6 +239,25 @@ public class Personnage {
         System.out.println("Vous avez : " + this.defense + "de défense " );
         System.out.println("Vous avez : " + this.coupCritique + " de coup critique" );
         System.out.println("Vous êtes : " + this.niveau1 + ", le peuple vous félicite ! Bravo ! Mais beaucoup vous reste...");
+        /*
+        Cette fonction affiche la classe du joueur, son nom ainsi que son nombre de kamas.
+        Cette fonction affichera également les stats du joueur. (Nom, PV, Att, Def, Crit).
+        Elle affichera aussi si le joueur a une potion ou non.
+        */
+    }
+     public void affStats2() {
+       
+        System.out.println("Vous êtes un : " + this.classePersonnage );
+        System.out.println("Vous êtes un : " + this.nomPersonnage );
+        System.out.println("Vous avez : " + this.kama + "  kama" );
+        System.out.println("Vos statistiques sont les suivantes : " );
+        System.out.println("Vous êtes un : " + this.nomPersonnage );
+        System.out.println("Vous avez : " + this.pvActuel/this.pvMax + " pv ");
+
+        System.out.println("Vous avez : " + this.attaque + "d'attaque");
+        System.out.println("Vous avez : " + this.defense + "de défense " );
+        System.out.println("Vous avez : " + this.coupCritique + " de coup critique" );
+        System.out.println("Vous avez : " + this.nbrpotion + " potion(s)" );
         /*
         Cette fonction affiche la classe du joueur, son nom ainsi que son nombre de kamas.
         Cette fonction affichera également les stats du joueur. (Nom, PV, Att, Def, Crit).
@@ -406,7 +428,7 @@ public class Personnage {
                     this.pvActuel=0;
                 }
                         else {
-                            System.out.println("Vos nouveaux pv s'élève à :" +  this.pvActuel);
+                      //      System.out.println("Vos nouveaux pv s'élève à :" +  this.pvActuel);
                     }
         }
         else {
@@ -415,7 +437,7 @@ public class Personnage {
                         this.pvActuel=0;
                 }
         
-        System.out.println("Vos nouveaux  pv s'élèvent à :" + this.pvActuel);
+     //   System.out.println("Vos nouveaux  pv s'élèvent à :" + this.pvActuel);
         }
         
         

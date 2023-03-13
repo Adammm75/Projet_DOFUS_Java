@@ -87,7 +87,7 @@ public class fonctionDofus {
     public Personnage creationPerso()
     {
         Personnage p = new Personnage("", introduction(),
-                55, 55, 2, 1, 20,3,"electra", "joker");     
+                 55, 55, 2, 1, 20,"electra", "joker",3,"d","d","d","d","d","d","d","d","d","d");     
         System.out.println("Quel est votre nom disciple " + p.getClassePersonnage()
                 + " ?");
         String nomDuJoueur = s.next();
@@ -113,6 +113,15 @@ public class fonctionDofus {
     {
         String aff = "-----------------------------------------------------\n"
                 + "Voulez-vous voir les statistiques de vos nouveaux pouvoirs?\n"
+                + "1 - Oui\n"
+                + "2 - Non\n"
+                +"-----------------------------------------------------"; 
+        return repet(1, aff);
+    }
+     public int choixmenu2()
+    {
+        String aff = "-----------------------------------------------------\n"
+                + "Voulez-vous voir vos statistiques ?\n"
                 + "1 - Oui\n"
                 + "2 - Non\n"
                 +"-----------------------------------------------------"; 

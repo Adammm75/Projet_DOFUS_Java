@@ -190,17 +190,17 @@ public class ProRPjet {
                         joueur.affKama();
                         joueur.affDefense();                        
                     }
-                    if(choixPlace == 5)
+                    //    if(choixPlace == 5)
                     {
                         // Potion
-                        if(joueur.isPotion() == true)
+                        //       if(joueur.isPotion() == true)
                         {
                             System.out.println("Vous avez déjà une potion.");
                         }
-                        else
+                    //    else
                         {
                             joueur.perdreKama(250);
-                            joueur.setPotion(true);
+                         //   joueur.setPotion(true);
                             System.out.println("Vous avez acheté une potion.");
                             joueur.affKama();
                             
@@ -239,14 +239,14 @@ public class ProRPjet {
                             
                             if(nbAleaCoffre < 50)
                                 System.out.print("Vous avez de la chance, le coffre vous a offert un nouveau pouvoir en plus \n");
-                                getaffpouvoirbonus2();
+                            //     getaffpouvoirbonus2();
                                 System.out.println("----------------------------------------------------------------------------------");
  
                                 choixmenu = f.choixmenu();
                             
                                  if (choixmenu==2) 
                                    choixChoix = f.affChoix(); 
-                                 p.affStats();
+                                 joueur.affStats();
                                                             
                                     
                         }
@@ -270,6 +270,7 @@ public class ProRPjet {
                             System.out.println("Vous gagnez "+gainKama+" kamas !");
                             System.out.println("Vous avez vaincu le pitoyable "+affMonstre+" et vous voudriez être félicité ?");
                             joueur.gagneKama(gainKama);
+                            
                         }
                         else
                             System.out.println("Vous ne mériteriez même pas un centikama...");
@@ -376,6 +377,7 @@ public class ProRPjet {
                             System.out.println("Vous gagnez "+gainKama+" kamas !");
                             System.out.println("Vous avez vaincu le "+affMonstre+", enfin un adversaire que mon fils Jauneau (4 ans) ne peut pas battre.");
                             joueur.gagneKama(gainKama);
+                            niveau1();
                         }
                         else
                             System.out.println("Vous ne mériteriez même pas un centikama...");
@@ -404,9 +406,10 @@ public class ProRPjet {
                    System.out.println("Maintenant, Mob l'Eponge n'attend que vous, une aventure épique c'est impressionnant.");
                    joueur.setKama(500);
                    niveau1();
-                   choixmenu = f.choixmenu();
+                   
+                   
                    if (choixmenu==2)         
-                       p.affStatsniveau1();
+                       joueur.affStatsniveau1();
                    
                    choixChoix = f.affChoix(); 
                 }
@@ -429,6 +432,7 @@ public class ProRPjet {
                 else if(choixBoss == 2 && (mobEponge.getPvActuel() <= 0))
                 {
                     System.out.println("Vous avez déjà épongé Mob l'Eponge. Merci d'ailleurs.");
+                    niveau2();
                 }
                 if(choixBoss == 3 && (bouftouRoyal.getPvActuel() > 0))
                 {
@@ -440,6 +444,7 @@ public class ProRPjet {
                     
                     System.out.println("Vous avez vaincu le terrible BOUFTOU ROYAL (non, il s'est laissé faire).");
                     System.out.println("Vous avez fini le jeux et êtes maintenant un grand aventurier (non, vous êtes juste en train de faire un tp noté).");
+                    niveau3();
                 }
                 else if(choixBoss == 3 && (bouftouRoyal.getPvActuel() <= 0))
                 {
@@ -498,6 +503,8 @@ public class ProRPjet {
         int nbAlea;
         boolean crit;
         boolean regardeStats;
+         int choixChoix;
+                int choixmenu1;
         String affChoixCombat = "-----------------------------------------------------\n" 
                 + "Que voulez-vous faire ?\n"
                 + "1 - Afficher statistiques\n"
@@ -545,8 +552,15 @@ public class ProRPjet {
                     System.out.println("Vous avez regagné tous vos pv !");
                     p.setnbrPotion();
                     
-                    
-                    p.affVie();
+                    choixmenu1 = f.choixmenu2();
+                
+                if (choixmenu1==2)
+                {
+                   choixChoix = f.affChoix(); 
+                }
+                else {
+                    p.affStats2();
+                }
                    
  
                 }
@@ -554,10 +568,21 @@ public class ProRPjet {
                     System.out.println("Vous avez utiliser toutes vos potions.");
                     System.out.println("...");
                     System.out.println("Aie, vous n'avez plus de potion ! ");
-                    p.affVie();
+                    
+                    
+                   choixmenu1 = f.choixmenu2();
+                
+                if (choixmenu1==2)
+                {
+                    choixChoix = f.affChoix();
+                } 
+                else {
+                    p.affStats2();
+                }
+                     
                     
                 }
-                
+               
                 
                 
 
@@ -616,7 +641,6 @@ public class ProRPjet {
        System.out.println("----------------------------------------------------------------------------------");
        System.out.println("Jamais deux sans un, nous vous offrons aussi le pouvoir : \n" + pouvoirbonus2 );
        System.out.println("----------------------------------------------------------------------------------");
-       System.out.println("Pour connaitre leurs statistiques de combat, entrer 2" );
        return pouvoirbonus1 + pouvoirbonus2;
     }
     public static String getaffpouvoirbonus2() {
@@ -627,7 +651,6 @@ public class ProRPjet {
        System.out.println("----------------------------------------------------------------------------------");
        System.out.println("Jamais deux sans un, nous vous offrons aussi le pouvoir : \n" + pouvoirbonus2 + " qui vous permettre d'être invicible et donc d'attaquer sans être touché par des dégats" );
        System.out.println("----------------------------------------------------------------------------------");
-       System.out.println("Pour connaitre leurs statistiques de combat, entrer 2" );
        return pouvoirbonus1 + pouvoirbonus2;
     }
     
